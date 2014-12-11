@@ -25,7 +25,7 @@ public class Lecture extends Model {
   @Column(columnDefinition = "TEXT")
   private String description;
   private String videoId;
-  
+
   private String courseLevel;
 
   /**
@@ -49,7 +49,7 @@ public class Lecture extends Model {
     this.setTopic(topic);
     this.setDescription(description);
     this.setVideoId(videoId.substring(videoId.length() - 11, videoId.length()));
-    
+
     this.setCourseLevel(course + " " + level);
   }
 

@@ -1,9 +1,12 @@
+import static play.mvc.Results.badRequest;
+import static play.mvc.Results.notFound;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import models.Course;
+import models.Lecture;
 import models.LectureDB;
 import models.UserInfo;
 import models.UserInfoDB;
@@ -14,8 +17,6 @@ import play.mvc.Http.RequestHeader;
 import play.mvc.SimpleResult;
 import views.formdata.LectureForm;
 import views.html.InvalidUrl;
-import static play.mvc.Results.notFound;
-import static play.mvc.Results.badRequest;
 
 /**
  * Initialize data on start up.
@@ -32,7 +33,7 @@ public class Global extends GlobalSettings {
   /**
    * Initialize data(course, users, lectures, etc...) on start up.
    * 
-   *  @author Alvin Prieto and Alvin Wang
+   * @author Alvin Prieto and Alvin Wang
    */
   public void onStart(Application app) {
 
@@ -42,27 +43,35 @@ public class Global extends GlobalSettings {
     }
 
     if (UserInfo.find().all().isEmpty()) {
-      UserInfoDB.addUserInfo("Administrative", "User", "admin@admin.com", "admin", "http://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Warning_notice_-_EVIL_ADMIN.svg/500px-Warning_notice_-_EVIL_ADMIN.svg.png");
+      UserInfoDB
+          .addUserInfo(
+              "Administrative",
+              "User",
+              "admin@admin.com",
+              "admin",
+              "http://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Warning_notice_-_EVIL_ADMIN.svg/500px-Warning_notice_-_EVIL_ADMIN.svg.png");
     }
 
     /* Alvin Wang */
-    LectureDB.addLecture(new LectureForm("ICS", "311", "Topic 03 A: Asymtotic Notations",
-        "Introduces asymptotic concepts and big-O notation.", "https://www.youtube.com/watch?v=y86z2OrIYQQ"));
+    if (Lecture.find().all().isEmpty()) {
+      LectureDB.addLecture(new LectureForm("ICS", "311", "Topic 03 A: Asymtotic Notations",
+          "Introduces asymptotic concepts and big-O notation.", "https://www.youtube.com/watch?v=y86z2OrIYQQ"));
 
-    LectureDB.addLecture(new LectureForm("ICS", "311", "Topic 06 C: Hash Functions",
-        "Examples of Hash Functions and Universal Hashing", "https://www.youtube.com/watch?v=jW4wCfz3DwE"));
+      LectureDB.addLecture(new LectureForm("ICS", "311", "Topic 06 C: Hash Functions",
+          "Examples of Hash Functions and Universal Hashing", "https://www.youtube.com/watch?v=jW4wCfz3DwE"));
 
-    LectureDB.addLecture(new LectureForm("ICS", "314", "Introduction to ICS 314, Fall 2013",
-        "introduction to software engineering. See http://ics314f13.wordpress.com",
-        "https://www.youtube.com/watch?v=H_Oc1x-XdYo"));
+      LectureDB.addLecture(new LectureForm("ICS", "314", "Introduction to ICS 314, Fall 2013",
+          "introduction to software engineering. See http://ics314f13.wordpress.com",
+          "https://www.youtube.com/watch?v=H_Oc1x-XdYo"));
 
-    LectureDB.addLecture(new LectureForm("KOR", "101", "How to Introduce Yourself in Korean",
-        "In Korea, manners are important, and this step-by-step video teaches you some of the basics you need to"
-            + " be polite while speaking Korean. A native Korean teacher will explain the simple phrases necessary.",
-        "https://www.youtube.com/watch?v=x9_BmcUk_Xs"));
+      LectureDB.addLecture(new LectureForm("KOR", "101", "How to Introduce Yourself in Korean",
+          "In Korea, manners are important, and this step-by-step video teaches you some of the basics you need to"
+              + " be polite while speaking Korean. A native Korean teacher will explain the simple phrases necessary.",
+          "https://www.youtube.com/watch?v=x9_BmcUk_Xs"));
 
-    LectureDB.addLecture(new LectureForm("KOR", "201", "Intermediate Korean Practice 1", "Create complex sentence(s)",
-        "https://www.youtube.com/watch?v=ZRJ5QKqstTM"));
+      LectureDB.addLecture(new LectureForm("KOR", "201", "Intermediate Korean Practice 1",
+          "Create complex sentence(s)", "https://www.youtube.com/watch?v=ZRJ5QKqstTM"));
+    }
 
   }
 
