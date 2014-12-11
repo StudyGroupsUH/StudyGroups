@@ -17,7 +17,7 @@ import play.mvc.Security;
 /**
  * Implements the controller for Lectures.
  * 
- * @author Alvin
+ * @author Alvin Wang
  *
  */
 public class Lectures extends Controller{

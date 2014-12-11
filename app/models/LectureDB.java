@@ -9,7 +9,7 @@ import views.formdata.LectureForm;
  * 
  * These methods have not been tested yet.
  * 
- * @author Alvin
+ * @author Alvin Wang
  *
  */
 public class LectureDB {

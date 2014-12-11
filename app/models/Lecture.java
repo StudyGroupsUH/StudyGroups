@@ -8,7 +8,7 @@ import play.db.ebean.Model;
 /**
  * A model for a lecture.
  * 
- * @author Alvin
+ * @author Alvin Wang
  *
  */
 @Entity

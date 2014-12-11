@@ -10,7 +10,7 @@ import play.data.validation.Constraints;
  * 
  * Used for the search bar located in the navbar.
  * 
- * @author Alvin Prieto
+ * @author Alvin Prieto and Alvin Wang
  *
  */
 public class Search {
@@ -31,6 +31,8 @@ public class Search {
    * Returns a Form object of the Search object.
    * 
    * @return sf a Form object.
+   * 
+   * @author Alvin Prieto
    */
   public static Form<Search> getForm() {
     Search searchForm = new Search();
@@ -42,6 +44,8 @@ public class Search {
    * Searches stuff.
    * 
    * @param term the term to be searched for.
+   * 
+   * @author Alvin Prieto and Alvin Wang
    */
   public static void search(String keywords) {
 
@@ -52,7 +56,8 @@ public class Search {
 
     List<Lecture> currentLectures = Lecture.find().all();
     List<StudyGroup> currentSGs = StudyGroup.find().all();
-
+    
+    /* Alvin Wang (for loops) */
     for (Lecture lecture : currentLectures) {
       if (containsKeys(
           lecture
@@ -79,6 +84,8 @@ public class Search {
    * @param keys the keywords
    * 
    * @return a list of keys
+   * 
+   * @author Alvin Wang
    */
   private static List<String> keysToList(String keys) {
     return java.util.Arrays.asList(keys.split("\\s+"));
@@ -91,6 +98,8 @@ public class Search {
    * @param keys the keywords
    * 
    * @return false if target does not contain all the keys, true otherwise.
+   * 
+   * @author Alvin Wang
    */
   private static boolean containsKeys(String target, List<String> keys) {
     boolean result = true;

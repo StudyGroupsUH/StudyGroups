@@ -4,6 +4,8 @@ package models;
  * Provides an in-memory repository for UserInfo. Storing credentials in the clear is kind of bogus.
  * 
  * @author Philip Johnson
+ * 
+ * @modified by Alvin Prieto and Alvin Wang
  */
 public class UserInfoDB {
 

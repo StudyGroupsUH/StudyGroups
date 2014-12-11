@@ -17,13 +17,26 @@ import views.html.InvalidUrl;
 import static play.mvc.Results.notFound;
 import static play.mvc.Results.badRequest;
 
+/**
+ * Initialize data on start up.
+ * 
+ * @author Alvin Prieto and Alvin Wang
+ *
+ */
 public class Global extends GlobalSettings {
 
+  /* Alvin Prieto */
   File courses = new File("public/files/Courses.txt");
   BufferedReader br = null;
 
+  /**
+   * Initialize data(course, users, lectures, etc...) on start up.
+   * 
+   *  @author Alvin Prieto and Alvin Wang
+   */
   public void onStart(Application app) {
 
+    /* Alvin Prieto */
     if (Course.find().all().isEmpty()) {
       loadCourses(courses);
     }
@@ -32,6 +45,7 @@ public class Global extends GlobalSettings {
       UserInfoDB.addUserInfo("Administrative", "User", "admin@admin.com", "admin", "http://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Warning_notice_-_EVIL_ADMIN.svg/500px-Warning_notice_-_EVIL_ADMIN.svg.png");
     }
 
+    /* Alvin Wang */
     LectureDB.addLecture(new LectureForm("ICS", "311", "Topic 03 A: Asymtotic Notations",
         "Introduces asymptotic concepts and big-O notation.", "https://www.youtube.com/watch?v=y86z2OrIYQQ"));
 
@@ -52,14 +66,29 @@ public class Global extends GlobalSettings {
 
   }
 
+  /**
+   * Handles invalid urls.
+   * 
+   * @author Alvin Prieto
+   */
   public Promise<SimpleResult> onHandlerNotFound(RequestHeader request) {
     return Promise.<SimpleResult> pure(notFound(InvalidUrl.render("Error 404")));
   }
 
+  /**
+   * Handles bad requests.
+   * 
+   * @author Alvin Prieto
+   */
   public Promise<SimpleResult> onBadRequest(RequestHeader request, String error) {
     return Promise.<SimpleResult> pure(badRequest("Don't try to hack the URL!"));
   }
 
+  /**
+   * Load course from file.
+   * 
+   * @author Alvin Prieto
+   */
   private void loadCourses(File file) {
 
     String line = "";

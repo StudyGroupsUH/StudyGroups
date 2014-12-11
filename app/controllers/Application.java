@@ -17,7 +17,7 @@ import views.html.course.ListOfCourses;
 /**
  * The main controller for this application.
  * 
- * @author Alvin Prieto
+ * @author Alvin Prieto and Alvin Wang
  *
  */
 public class Application extends Controller {
@@ -26,6 +26,8 @@ public class Application extends Controller {
    * Returns the index page.
    * 
    * @return the index page.
+   * 
+   * @author Alvin Prieto 
    */
   public static Result index() {
     return ok(Index.render("Welcome", LoginForm.getForm(), false, UserForm.getForm(), false));
@@ -35,6 +37,8 @@ public class Application extends Controller {
    * Returns the page containing the list of courses.
    * 
    * @return page containing list of courses
+   * 
+   * @author Alvin Prieto 
    */
   public static Result listOfCourses() {
     List<Course> courses = Course.find().all();
@@ -46,6 +50,8 @@ public class Application extends Controller {
    * 
    * @param currUrl the url of the page where the search button was pressed.
    * @return the search results page
+   * 
+   * @author Alvin Prieto 
    */
   public static Result search(String currUrl) {
 

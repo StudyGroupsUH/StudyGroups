@@ -13,6 +13,12 @@ import views.formdata.UserForm;
 import views.html.Index;
 import views.html.user.Profile;
 
+/**
+ * The controller for Users.
+ * 
+ * @author Alvin Prieto and Alvin Wang
+ *
+ */
 public class Users extends Controller {
 
   /**
@@ -28,6 +34,7 @@ public class Users extends Controller {
     }
 
     UserForm uf = userForm.get();
+    /** Alvin Wang */
     if (uf.getProfilePic() == null || uf.getProfilePic().length() == 0) {
       uf.setProfilePic("https://raw.githubusercontent.com/StudyGroupsUH/StudyGroups/dev-v1/public/images/book.png");
     }

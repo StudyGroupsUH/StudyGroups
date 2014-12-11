@@ -9,6 +9,8 @@ import play.db.ebean.Model;
  * A simple representation of a user.
  * 
  * @author Philip Johnson
+ * 
+ * @modified by Alvin Prieto and Alvin Wang
  */
 @Entity
 public class UserInfo extends Model {
