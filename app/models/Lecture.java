@@ -1,8 +1,8 @@
 package models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import play.db.ebean.Model;
 
 /**
@@ -22,7 +22,7 @@ public class Lecture extends Model {
   private String course;
   private String level;
   private String topic;
-  @Lob
+  @Column(columnDefinition = "TEXT")
   private String description;
   private String videoId;
   
