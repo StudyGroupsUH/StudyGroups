@@ -1,11 +1,10 @@
+import static play.mvc.Results.badRequest;
+import static play.mvc.Results.notFound;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
-import com.avaje.ebean.Ebean;
 import models.Course;
 import models.Lecture;
 import models.LectureDB;
@@ -14,13 +13,10 @@ import models.UserInfoDB;
 import play.Application;
 import play.GlobalSettings;
 import play.libs.F.Promise;
-import play.libs.Yaml;
 import play.mvc.Http.RequestHeader;
 import play.mvc.SimpleResult;
 import views.formdata.LectureForm;
 import views.html.InvalidUrl;
-import static play.mvc.Results.notFound;
-import static play.mvc.Results.badRequest;
 
 public class Global extends GlobalSettings {
 
@@ -29,12 +25,9 @@ public class Global extends GlobalSettings {
 
   public void onStart(Application app) {
 
-    /**
-     * if (Course.find().all().isEmpty()) {
-     * 
-     * @SuppressWarnings("unchecked") Map<String, List<Object>> all = (Map<String, List<Object>>)
-     * Yaml.load("initial-data.yml"); Ebean.save(all.get("subject")); }
-     
+    if (Course.find().all().isEmpty()) {
+      loadCourses(courses);
+    }
 
     if (UserInfo.find().all().isEmpty()) {
       UserInfoDB
@@ -65,7 +58,7 @@ public class Global extends GlobalSettings {
       LectureDB.addLecture(new LectureForm("KOR", "201", "Intermediate Korean Practice 1",
           "Create complex sentence(s)", "https://www.youtube.com/watch?v=ZRJ5QKqstTM"));
     }
-    **/
+
   }
 
   public Promise<SimpleResult> onHandlerNotFound(RequestHeader request) {
