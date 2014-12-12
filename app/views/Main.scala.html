@@ -227,6 +227,33 @@
   </div>
 
   <div class="container">
+  <SCRIPT LANGUAGE="JavaScript">
+
+
+//Bread crumb script - Kevin Lynn Brown
+// modified by Alvin Prieto
+//Duplicate directory names bug fix by JavaScriptKit.com
+//Visit JavaScript Kit (http://javascriptkit.com) for script
+
+var path = "";
+var href = document.location.href;
+var s = href.split("/");
+
+s[2] = "home";
+path+="<a href=\""+"/"+"\">"+ s[2] +"</a> > ";
+
+for (var i=3;i<(s.length-1);i++) {
+    path+="<a href=\""+href.substring(0,href.indexOf("/"+s[i])+s[i].length+1)+"\">"+s[i]+"</a> > ";
+}
+
+path+=s[s.length-1];
+var url = path;
+
+document.writeln(url);
+
+</script>
+
+
     @content
   </div>
 
