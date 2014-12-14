@@ -75,12 +75,14 @@ public class UserForm {
       errors.add(new ValidationError("password2", "Passwords do not match."));
     }
 
-    if (!exists(profilePic)) {
-      errors.add(new ValidationError("profilePic", "Invalid URL. Example: http://www.example.com/me.jpg"));
-    }
+    if (!(profilePic == null || profilePic.length() == 0)) {
+      if (!exists(profilePic)) {
+        errors.add(new ValidationError("profilePic", "Invalid URL. Example: http://www.example.com/me.jpg"));
+      }
     
-    if (!(profilePic.endsWith(".jpg") || profilePic.endsWith(".png") || profilePic.endsWith(".gif"))) {
-      errors.add(new ValidationError("profilePic", "Invalid image URL. Must end with .jpg, .png, or .gif"));
+      if (!(profilePic.endsWith(".jpg") || profilePic.endsWith(".png") || profilePic.endsWith(".gif"))) {
+        errors.add(new ValidationError("profilePic", "Invalid image URL. Must end with .jpg, .png, or .gif"));
+      }
     }
     
     return errors.isEmpty() ? null : errors;
