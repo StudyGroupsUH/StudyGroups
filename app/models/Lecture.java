@@ -163,5 +163,19 @@ public class Lecture extends Model {
   public void setUser(UserInfo user) {
     this.user = user;
   }
+  
+  /**
+   * @return the id
+   */
+  public long getId() {
+    return id;
+  }
+
+  /**
+   * @param id the id to set
+   */
+  public void setId(long id) {
+    this.id = id;
+  }
 
 }

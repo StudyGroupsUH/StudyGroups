@@ -54,11 +54,26 @@
     </div>
     <div class="well">
       @if(lectures.isEmpty()) {
-        You have not added any lecture videos. <a data-toggle="modal" href="#create">Add One?</a>
+      You have not added any lecture videos. <a data-toggle="modal" href="#create">Add One?</a>
       } else {
-        <h3>
-         Total Lectures Added: <span class="badge">@lectures.size()</span>
-        </h3>
+      <h3>Total Lectures Added: <span class="badge">@lectures.size()</span></h3>
+      <br>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Topic</th>
+          </tr>
+        </thead>
+        <tbody data-link="row" class="rowlink">
+          @for(lecture <- lectures) {
+          <tr class="tBody">
+          <td><a class="no_link" href="@routes.Lectures.viewLecture(Misc.slugify(lecture.getCourse))">@lecture.getCourseLevel()</a></td>
+          <td>@lecture.getTopic()</td>
+          </tr>
+          }
+          </tbody>
+        </table>
       }
     </div>
   </div>
