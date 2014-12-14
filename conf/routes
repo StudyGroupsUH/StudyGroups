@@ -5,6 +5,7 @@
 # Home page
 GET     /                           controllers.Application.index()
 GET     /courses                    controllers.Application.listOfCourses()
+GET     /about                      controllers.Application.aboutUs()
 POST    /search                     controllers.Application.search(currUrl: String)
 
 # Users

@@ -50,3 +50,19 @@ h1 {
   height: 21px;
   width: 25px;
 }
+
+.avatar1 {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100px;
+  width: 100px;
+}
+
+.avatar2 {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100px;
+  width: 100px;
+}

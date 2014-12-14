@@ -13,6 +13,7 @@ import views.formdata.UserForm;
 import views.html.Index;
 import views.html.SearchResults;
 import views.html.course.ListOfCourses;
+import views.html.About;
 
 /**
  * The main controller for this application.
@@ -66,6 +67,17 @@ public class Application extends Controller {
       return ok(SearchResults.render("Search", term, lectures, studyGroups));
     }
     return redirect(currUrl);
+  }
+  
+  /**
+   * Returns the about us page.
+   * 
+   * @return the about us page
+   * 
+   * @author Alvin Wang
+   */
+  public static Result aboutUs() {
+    return ok(About.render("About Us", LoginForm.getForm(), false, UserForm.getForm(), false));
   }
 
   /**
