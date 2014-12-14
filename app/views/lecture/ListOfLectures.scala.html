@@ -81,7 +81,8 @@
           <p><b>Description: </b></p>
           @lecture.getDescription() 
           <br> <br> 
-          @if(Secured.isLoggedIn(ctx())) {  
+          <p><b>Added by:</b> @lecture.getUser.getFullName()</p>
+          @if(Secured.isLoggedIn(ctx()) && (Secured.getUserInfo(ctx()) == lecture.getUser)) {  
           <a id="deleteLecture" data-toggle="modal" href="#delete" class="open-delete btn btn-danger btn-xs pull-right" data-link="@routes.Lectures.deleteLecture(course.getId(), lecture.getCourse(), lecture.getLevel(), lecture.getVideoId())"><span class="glyphicon glyphicon-trash"></span> Delete</a>
           }
         </div>

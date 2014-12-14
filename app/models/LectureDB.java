@@ -19,9 +19,9 @@ public class LectureDB {
    * 
    * @param data Lecture data
    */
-  public static void addLecture(LectureForm data) {
+  public static void addLecture(LectureForm data, UserInfo user) {
     if (!isRepeatVideo(data.course, data.level, data.videoId)) {
-      Lecture lecture = new Lecture(data.course.toUpperCase(), data.level, data.topic, data.description, data.videoId);
+      Lecture lecture = new Lecture(data.course.toUpperCase(), data.level, data.topic, data.description, data.videoId, user);
       lecture.save();
     }
     else {
@@ -31,6 +31,7 @@ public class LectureDB {
       lecture.setTopic(data.topic);
       lecture.setDescription(data.description);
       lecture.setVideoId(data.videoId);
+      lecture.setUser(user);
       lecture.save();
     }
   }
@@ -82,6 +83,10 @@ public class LectureDB {
    */
   public static List<Lecture> getLectures(String course, String level) {
     return Lecture.find().where().and(Expr.eq("course", course), Expr.eq("level", level)).findList();
+  }
+  
+  public static List<Lecture> getLectures(UserInfo user) {
+    return Lecture.find().where().eq("user", user).findList();
   }
   
   /**

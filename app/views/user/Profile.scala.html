@@ -1,4 +1,4 @@
-@(message: String, user: models.UserInfo, studyGroups: List[models.StudyGroup]) 
+@(message: String, user: models.UserInfo, studyGroups: List[models.StudyGroup], lectures: List[models.Lecture]) 
 
 @scripts = {} 
 
@@ -50,6 +50,15 @@
           }
         </tbody>
       </table>
+      }
+    </div>
+    <div class="well">
+      @if(lectures.isEmpty()) {
+        You have not added any lecture videos. <a data-toggle="modal" href="#create">Add One?</a>
+      } else {
+        <h3>
+         Total Lectures Added: <span class="badge">@lectures.size()</span>
+        </h3>
       }
     </div>
   </div>

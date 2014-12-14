@@ -3,6 +3,7 @@ package models;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import play.db.ebean.Model;
 
 /**
@@ -27,6 +28,9 @@ public class Lecture extends Model {
   private String videoId;
 
   private String courseLevel;
+  
+  @OneToOne
+  private UserInfo user;
 
   /**
    * Empty constructor.
@@ -43,14 +47,14 @@ public class Lecture extends Model {
    * @param description optional description of video.
    * @param videoId YouTube video ID
    */
-  public Lecture(String course, String level, String topic, String description, String videoId) {
+  public Lecture(String course, String level, String topic, String description, String videoId, UserInfo user) {
     this.setCourse(course);
     this.setLevel(level);
     this.setTopic(topic);
     this.setDescription(description);
     this.setVideoId(videoId.substring(videoId.length() - 11, videoId.length()));
-
     this.setCourseLevel(course + " " + level);
+    this.setUser(user);
   }
 
   /**
@@ -144,6 +148,20 @@ public class Lecture extends Model {
    */
   public void setCourseLevel(String courseLevel) {
     this.courseLevel = courseLevel;
+  }
+  
+  /**
+   * @return the user
+   */
+  public UserInfo getUser() {
+    return user;
+  }
+
+  /**
+   * @param user the user to set
+   */
+  public void setUser(UserInfo user) {
+    this.user = user;
   }
 
 }

@@ -24,6 +24,7 @@ create table lecture (
   description               TEXT,
   video_id                  varchar(255),
   course_level              varchar(255),
+  user_id                   bigint,
   constraint pk_lecture primary key (id))
 ;
 
@@ -61,8 +62,10 @@ create sequence study_group_seq;
 
 create sequence user_info_seq;
 
-alter table study_group add constraint fk_study_group_user_1 foreign key (user_id) references user_info (id) on delete restrict on update restrict;
-create index ix_study_group_user_1 on study_group (user_id);
+alter table lecture add constraint fk_lecture_user_1 foreign key (user_id) references user_info (id) on delete restrict on update restrict;
+create index ix_lecture_user_1 on lecture (user_id);
+alter table study_group add constraint fk_study_group_user_2 foreign key (user_id) references user_info (id) on delete restrict on update restrict;
+create index ix_study_group_user_2 on study_group (user_id);
 
 
 

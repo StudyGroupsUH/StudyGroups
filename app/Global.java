@@ -54,23 +54,24 @@ public class Global extends GlobalSettings {
 
     /* Alvin Wang */
     if (Lecture.find().all().isEmpty()) {
+      UserInfo user = UserInfoDB.getUser("admin@admin.com");
       LectureDB.addLecture(new LectureForm("ICS", "311", "Topic 03 A: Asymtotic Notations",
-          "Introduces asymptotic concepts and big-O notation.", "https://www.youtube.com/watch?v=y86z2OrIYQQ"));
+          "Introduces asymptotic concepts and big-O notation.", "https://www.youtube.com/watch?v=y86z2OrIYQQ"), user);
 
       LectureDB.addLecture(new LectureForm("ICS", "311", "Topic 06 C: Hash Functions",
-          "Examples of Hash Functions and Universal Hashing", "https://www.youtube.com/watch?v=jW4wCfz3DwE"));
+          "Examples of Hash Functions and Universal Hashing", "https://www.youtube.com/watch?v=jW4wCfz3DwE"), user);
 
       LectureDB.addLecture(new LectureForm("ICS", "314", "Introduction to ICS 314, Fall 2013",
           "introduction to software engineering. See http://ics314f13.wordpress.com",
-          "https://www.youtube.com/watch?v=H_Oc1x-XdYo"));
+          "https://www.youtube.com/watch?v=H_Oc1x-XdYo"), user);
 
       LectureDB.addLecture(new LectureForm("KOR", "101", "How to Introduce Yourself in Korean",
           "In Korea, manners are important, and this step-by-step video teaches you some of the basics you need to"
               + " be polite while speaking Korean. A native Korean teacher will explain the simple phrases necessary.",
-          "https://www.youtube.com/watch?v=x9_BmcUk_Xs"));
+          "https://www.youtube.com/watch?v=x9_BmcUk_Xs"), user);
 
       LectureDB.addLecture(new LectureForm("KOR", "201", "Intermediate Korean Practice 1",
-          "Create complex sentence(s)", "https://www.youtube.com/watch?v=ZRJ5QKqstTM"));
+          "Create complex sentence(s)", "https://www.youtube.com/watch?v=ZRJ5QKqstTM"), user);
     }
 
   }

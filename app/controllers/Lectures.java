@@ -4,6 +4,7 @@ import java.util.List;
 import models.Course;
 import models.Lecture;
 import models.LectureDB;
+import models.UserInfo;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -64,7 +65,8 @@ public class Lectures extends Controller{
     }
     else {
       LectureForm data = formData.get();
-      LectureDB.addLecture(data); 
+      UserInfo user = Secured.getUserInfo(ctx());
+      LectureDB.addLecture(data, user); 
       
       return redirect(routes.Lectures.viewLecture(courseName.getId()));
     }
@@ -85,7 +87,8 @@ public class Lectures extends Controller{
     }
     else {
       LectureForm data = formData.get();
-      LectureDB.addLecture(data); 
+      UserInfo user = Secured.getUserInfo(ctx());
+      LectureDB.addLecture(data, user); 
       
       Course courseName = Course.find().byId(data.getCourse().toUpperCase());
       
