@@ -5,7 +5,10 @@ import java.util.Calendar;
 import java.util.List;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import org.joda.time.DateTime;
+import org.joda.time.Days;
 import models.Course;
+import models.DateTimeInfo;
 import play.data.validation.Constraints;
 import play.data.validation.ValidationError;
 
@@ -43,7 +46,7 @@ public class StudyGroupForm {
 
   @Constraints.Required(message = "Minutes are required.")
   public String min;
-  
+
   @Constraints.Required(message = "Please select one.")
   public String amPm;
 
@@ -146,7 +149,7 @@ public class StudyGroupForm {
     }
 
     if ((mon == 4 || mon == 6 || mon == 9 || mon == 11) && (numDay >= 31)) {
-      errors.add(new ValidationError("day", "Cannot have more than 30 numDays in this mon"));
+      errors.add(new ValidationError("day", "Cannot have more than 30 numDays in this month"));
     }
     else {
       this.intMonth = mon;
@@ -154,7 +157,7 @@ public class StudyGroupForm {
     }
 
     if ((mon == 1 || mon == 3 || mon == 5 || mon == 7 || mon == 8 || mon == 10 || mon == 12) && (numDay >= 32)) {
-      errors.add(new ValidationError("day", "Cannot have more than 31 numDays in this mon"));
+      errors.add(new ValidationError("day", "Cannot have more than 31 numDays in this month"));
     }
     else {
       this.intMonth = mon;
@@ -169,7 +172,7 @@ public class StudyGroupForm {
       this.intDay = numDay;
     }
 
-    if (isLeapYear(year) && mon == 2 && numDay >= 29) {
+    if (!isLeapYear(year) && mon == 2 && numDay >= 29) {
       errors.add(new ValidationError("day", "Cannot have more than 28 numDays in Feb"));
     }
     else {
@@ -203,6 +206,26 @@ public class StudyGroupForm {
     }
     else {
       this.intMinutes = minutes;
+    }
+
+    DateTime today = new DateTime();
+
+    DateTime date = new DateTime(year, intMonth, intDay, intHours, intMinutes);
+
+    int days = Days.daysBetween(today, date).getDays();
+
+    if (days < 0) {
+      errors.add(new ValidationError("day", "You can't schedule something in the past."));
+    }
+    if (days == 0) {
+      if (intHours < today.hourOfDay().get()) {
+        errors.add(new ValidationError("hour", "You can't schedule something in the past."));
+      }
+      if (intHours == today.hourOfDay().get()) {
+        if (intMinutes < today.minuteOfDay().get()) {
+          errors.add(new ValidationError("min", "You can't schedule something in the past."));
+        }
+      }
     }
 
     return errors.isEmpty() ? null : errors;
