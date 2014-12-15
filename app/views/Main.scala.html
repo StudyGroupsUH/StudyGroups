@@ -238,11 +238,18 @@ splitUrl[2] = "Home";
 path += "<a href=\"/\">" + splitUrl[2] + "</a>";
 
 if (splitUrl[3] !== undefined) {
-	if (splitUrl[4] === undefined) {
-	    path += " > " + upperCase(splitUrl[3]);
-	} else {
-	    path += " > <a href=\""+href.substring(0,href.indexOf("/"+splitUrl[3])+splitUrl[3].length+1)+"\">"+upperCase(splitUrl[3])+"</a>";
-    }
+	if (splitUrl[3].indexOf("search") > -1) {
+		var search = splitUrl[3].split("?");
+		path += " > " + upperCase(search[0]);
+	}
+	else {
+		   if (splitUrl[4] === undefined) {
+			   path += " > " + upperCase(splitUrl[3]);
+			}
+		   else {
+			   path += " > <a href=\""+href.substring(0,href.indexOf("/"+splitUrl[3])+splitUrl[3].length+1)+"\">"+upperCase(splitUrl[3])+"</a>";
+			}
+	}
 }
 if (splitUrl[4] !== undefined) {
 	if (splitUrl[5] === undefined) {
