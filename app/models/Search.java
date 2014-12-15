@@ -1,7 +1,9 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import play.data.Form;
 import play.data.validation.Constraints;
 
@@ -20,6 +22,7 @@ public class Search {
 
   public static List<StudyGroup> studyGroups;
   public static List<Lecture> lectures;
+  public static List<Course> courses;
 
   /**
    * Default constructor.
@@ -51,12 +54,14 @@ public class Search {
 
     studyGroups = new ArrayList<>();
     lectures = new ArrayList<>();
+    courses = new ArrayList<>();
 
     List<String> keywordList = keysToList(keywords);
 
     List<Lecture> currentLectures = Lecture.find().all();
     List<StudyGroup> currentSGs = StudyGroup.find().all();
-    
+    List<Course> currentCourses = Course.find().all();
+
     /* Alvin Wang (for loops) */
     for (Lecture lecture : currentLectures) {
       if (containsKeys(
@@ -76,6 +81,19 @@ public class Search {
         studyGroups.add(sg);
       }
     }
+
+    Set<Course> courseSet = new HashSet<>();
+    for (Course course : currentCourses) {
+      for (String term : keywordList) {
+        if (course.getId().toLowerCase().contains(term)) {
+          courseSet.add(course);
+        }
+        if (course.getCourseName().toLowerCase().contains(term)) {
+          courseSet.add(course);
+        }
+      }
+    }
+    courses.addAll(courseSet);
   }
 
   /**
@@ -128,6 +146,10 @@ public class Search {
    */
   public static List<StudyGroup> getStudyGroupResults() {
     return studyGroups;
+  }
+
+  public static List<Course> getCourseResults() {
+    return courses;
   }
 
 }

@@ -62,9 +62,10 @@ public class Application extends Controller {
       Search search = searchForm.get();
       String term = search.term;
       Search.search(term);
+      List<Course> courses = Search.getCourseResults();
       List<Lecture> lectures = Search.getLectureResults();
       List<StudyGroup> studyGroups = Search.getStudyGroupResults();
-      return ok(SearchResults.render("Search", term, lectures, studyGroups));
+      return ok(SearchResults.render("Search", term, courses, lectures, studyGroups));
     }
     return redirect(currUrl);
   }

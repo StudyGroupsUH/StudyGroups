@@ -1,4 +1,4 @@
-@(message: String, term: String, lectures: List[models.Lecture], studyGroups: List[models.StudyGroup])
+@(message: String, term: String, courses: List[models.Course], lectures: List[models.Lecture], studyGroups: List[models.StudyGroup])
 
 @scripts = {
   <link rel="stylesheet" href="@routes.Assets.at("stylesheets/search.css")">
@@ -24,11 +24,20 @@
     <h1>Results for: "@term" </h1>
     <hr>
     
-    @if(lectures.isEmpty() && studyGroups.isEmpty()) {
+   
+    @if(courses.isEmpty() && lectures.isEmpty() && studyGroups.isEmpty()) {
         <h2>Sorry, No results were found.</h2>
         <br>
         <br>
     } else {
+    @if(!courses.isEmpty()) {
+    <h3>Courses: <span class="badge">@courses.size()</span></h3>
+        <ul>
+         @for(course <- courses) {
+            <li><a href="@routes.Courses.viewCourse(Misc.slugify(course.getId()))"><h5>(@course.getId()) @course.getCourseName()</h5></a></li>
+         }
+        </ul>
+    }
     @if(!lectures.isEmpty()) {
     <h3>Lectures: <span class="badge">@lectures.size()</span></h3>
     <hr>
