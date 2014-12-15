@@ -37,7 +37,7 @@ public class StudyGroups extends Controller {
   public static Result listStudyGroups(String course) {
     Course courseName = Course.getCourse(course);
     List<ClassLevel> classes = courseName.getClassesAsList();
-    return ok(ListStudyGroup.render(course.toUpperCase() + "- list of Study Groups", courseName, classes));
+    return ok(ListStudyGroup.render(course.toUpperCase() + " - list of Study Groups", courseName, classes));
   }
 
   /**

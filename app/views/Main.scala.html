@@ -228,33 +228,91 @@
   </div>
 
   <div class="container">
-  <SCRIPT LANGUAGE="JavaScript">
-
-
-//Bread crumb script - Kevin Lynn Brown
-// modified by Alvin Prieto
-//Duplicate directory names bug fix by JavaScriptKit.com
-//Visit JavaScript Kit (http://javascriptkit.com) for script
-
+<script type="text/javascript">
 var path = "";
+
 var href = document.location.href;
-var s = href.split("/");
+var splitUrl = href.split("/");
 
-s[2] = "home";
-path+="<a href=\""+"/"+"\">"+ s[2] +"</a> > ";
+splitUrl[2] = "Home";
+path += "<a href=\"/\">" + splitUrl[2] + "</a>";
 
-for (var i=3;i<(s.length-1);i++) {
-    path+="<a href=\""+href.substring(0,href.indexOf("/"+s[i])+s[i].length+1)+"\">"+s[i]+"</a> > ";
+if (splitUrl[3] !== undefined) {
+	if (splitUrl[4] === undefined) {
+	    path += " > " + upperCase(splitUrl[3]);
+	} else {
+	    path += " > <a href=\""+href.substring(0,href.indexOf("/"+splitUrl[3])+splitUrl[3].length+1)+"\">"+upperCase(splitUrl[3])+"</a>";
+    }
+}
+if (splitUrl[4] !== undefined) {
+	if (splitUrl[5] === undefined) {
+		path += " > " + splitUrl[4].toUpperCase();
+	}
+	else {
+	    path += " > <a href=\""+href.substring(0,href.indexOf("/"+splitUrl[4])+splitUrl[4].length+1)+"\">"+splitUrl[4].toUpperCase()+"</a>";
+	}
+}
+if (splitUrl[5] !== undefined) {
+	if (splitUrl[6] === undefined) {
+		if (splitUrl[5] === "lecture") {
+			path += " > " + upperCase(splitUrl[5]);
+		}
+		else {
+			path += " > "+removeHyphen(splitUrl[5]);
+		}
+	}
+	else{
+		if (splitUrl[5] === "lecture") {
+		   path += " > <a href=\""+href.substring(0,href.indexOf("/"+splitUrl[5])+splitUrl[5].length+1)+"\">"+upperCase(splitUrl[5])+"</a>";
+		}
+		else {
+		   path += " > <a href=\""+href.substring(0,href.indexOf("/"+splitUrl[5])+splitUrl[5].length+1)+"\">"+removeHyphen(splitUrl[5])+"</a>";
+		}	
+	}
+}
+if (splitUrl[6] !== undefined) {
+	var course = splitUrl[6].split("?");
+	if (splitUrl[7] === undefined) {
+		path += " > " + removeHyphenCourse(course[0]);
+	}
+	else {
+	    path += " > <a href=\""+href.substring(0,href.indexOf("/"+splitUrl[6])+splitUrl[6].length+1)+"?page=0\">"+removeHyphenCourse(course[0])+"</a>";
+	}
+}
+if (splitUrl[7] !== undefined) {
+    var id = splitUrl[8].split("#");
+    if (splitUrl[9] === undefined) {
+        path += " > " + "Study-Group - "+ id[0];
+    }
+    else {
+        path += " > <a href=\""+href.substring(0,href.indexOf("/"+splitUrl[7])+splitUrl[7].length+1)+"?page=0\">"+"Study-Group "+ splitUrl[8] + "</a>";
+    }
 }
 
-path+=s[s.length-1];
-var url = path;
 
-document.writeln(url);
+
+document.writeln(path);
+
+
+
+function removeHyphen(string) {
+    var split = string.replace('-', ' ').split(" ");
+	return split[0].charAt(0).toUpperCase() + split[0].slice(1) + " " + split[1].charAt(0).toUpperCase() + split[1].slice(1);
+}
+
+function removeHyphenCourse(string) {
+	var split = string.replace('-', ' ').split(" ");
+    return split[0].toUpperCase() + " " + split[1];
+}
+
+function upperCase(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
 </script>
 
-
+<br>
+<br>
     @content
   </div>
 
