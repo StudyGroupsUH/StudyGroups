@@ -21,7 +21,7 @@
           @if(list.isEmpty()) {
               <h3>Currently there are no study groups for this course...</h3>
                   @if(Secured.isLoggedIn(ctx())) {
-                      <a href="@routes.StudyGroups.createSgForCourse(Misc.slugify(course.getId))">Create a study group for it.</a>
+                      <a href="@routes.StudyGroups.createSgForCourse(Slug.slugify(course.getId))">Create a study group for it.</a>
                   } else {
                     <a data-toggle="modal" href="#login">Login</a> then create one.
                   }
@@ -51,7 +51,7 @@
                                 <tbody data-link="row" class="rowlink">
                                     @for(sg <- classes.getStudyGroupPage(0, 5).getList()) {
                                         <tr class="tBody">
-                                          <td><a class="no_link" href="@routes.StudyGroups.viewStudyGroup(sg.getId, Misc.slugify(sg.getCourse), Misc.slugify(sg.getCourseLevel))#disqus_thread">@sg.getTopics()</a></td>
+                                          <td><a class="no_link" href="@routes.StudyGroups.viewStudyGroup(sg.getId, Slug.slugify(sg.getCourse), Slug.slugify(sg.getCourseLevel))#disqus_thread">@sg.getTopics()</a></td>
                                           <td>@sg.getDay(), @sg.getMeetDateString()</td>
                                           <td>@sg.getMeetTimeString()</td>
                                           <td>@sg.getLocation()</td>
@@ -61,9 +61,9 @@
                                 </tbody>
                               </table>
                               </div>
-                             <h6><a href="@routes.StudyGroups.viewClassStudyGroup(Misc.slugify(classes.getCourse), Misc.slugify(classes.getCourseLevel), 0)">View all study Groups</a></h6>
+                             <h6><a href="@routes.StudyGroups.viewClassStudyGroup(Slug.slugify(classes.getCourse), Slug.slugify(classes.getCourseLevel), 0)">View all study Groups</a></h6>
                              @if(Secured.isLoggedIn(ctx())) {
-                                <h6><a href="@routes.StudyGroups.createSgForClass(Misc.slugify(classes.getCourse), Misc.slugify(classes.getCourseLevel))">Create Another Study Group for this class</a></h6>
+                                <h6><a href="@routes.StudyGroups.createSgForClass(Slug.slugify(classes.getCourse), Slug.slugify(classes.getCourseLevel))">Create Another Study Group for this class</a></h6>
                              }
                             </div>
                            </div>
@@ -75,7 +75,7 @@
         <hr>
         <div>
             @if(Secured.isLoggedIn(ctx())) {
-                <h5>Can't find your class?  <a href="@routes.StudyGroups.createSgForCourse(Misc.slugify(course.getId))">Create a study group for it.</a></h5> 
+                <h5>Can't find your class?  <a href="@routes.StudyGroups.createSgForCourse(Slug.slugify(course.getId))">Create a study group for it.</a></h5> 
             }                          
         </div>
         </div>           

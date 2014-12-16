@@ -3,7 +3,7 @@ package controllers;
 import java.util.List;
 import models.Lecture;
 import models.LectureDB;
-import models.Misc;
+import models.Slug;
 import models.StudyGroup;
 import models.UserInfo;
 import models.UserInfoDB;
@@ -74,6 +74,6 @@ public class Users extends Controller {
     UserInfo user = UserInfoDB.getUser(id);
     List<StudyGroup> sg = user.userStudyGroups();
     List<Lecture> lectures = LectureDB.getLectures(user);
-    return ok(Profile.render("View Profile: " + Misc.unSlugifyName(name), user, sg, lectures));
+    return ok(Profile.render("View Profile: " + Slug.unSlugifyName(name), user, sg, lectures));
   }
 }

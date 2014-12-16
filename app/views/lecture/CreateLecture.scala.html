@@ -12,27 +12,27 @@
 <div class="well">
  @form(routes.Lectures.addNewLecture(), 'class -> "form-horizontal") {
   
-            @text(lectureForm("course"),
+            @textShort(lectureForm("course"),
                   label = "Course",
                   placeholder = "ICS",
                   help = "")
             
-            @text(lectureForm("level"),
+            @textShort(lectureForm("level"),
                   label = "Level",
                   placeholder = "311",
                   help = "")
             
-            @text(lectureForm("topic"),
+            @textShort(lectureForm("topic"),
                   label = "Topic",
                   placeholder = "Topic 10A: Quicksort",
                   help = "")
             
-            @bootstrap3.textarea(lectureForm("description"),
+            @bootstrap3.textareaShort(lectureForm("description"),
                   label = "Description",
                   placeholder = "In this video, we will be going over quicksort....",
                   help = "Optional")
                   
-            @text(lectureForm("videoId"),
+            @textShort(lectureForm("videoId"),
                   label = "Video ID",
                   placeholder = "http://www.youtube.com/watch?v=v1ghdc_hwMI",
                   help = "The YouTube URL of the video")

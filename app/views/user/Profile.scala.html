@@ -41,7 +41,7 @@
           @for(sg <- studyGroups) {
           <tr class="tBody">
             <td><a class="no_link"
-              href="@routes.StudyGroups.viewStudyGroup(sg.getId, Misc.slugify(sg.getCourse), Misc.slugify(sg.getCourseLevel))">@sg.getTopics()</a></td>
+              href="@routes.StudyGroups.viewStudyGroup(sg.getId, Slug.slugify(sg.getCourse), Slug.slugify(sg.getCourseLevel))">@sg.getTopics()</a></td>
             <td>@sg.getCourseLevel()</td>
             <td>@sg.getDay(), @sg.getMeetDateString()</td>
             <td>@sg.getMeetTimeString()</td>
@@ -68,7 +68,7 @@
         <tbody data-link="row" class="rowlink">
           @for(lecture <- lectures) {
           <tr class="tBody">
-          <td><a class="no_link" href="@routes.Lectures.viewLecture(Misc.slugify(lecture.getCourse))">@lecture.getCourseLevel()</a></td>
+          <td><a class="no_link" href="@routes.Lectures.viewLecture(Slug.slugify(lecture.getCourse))">@lecture.getCourseLevel()</a></td>
           <td>@lecture.getTopic()</td>
           </tr>
           }

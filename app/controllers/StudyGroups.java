@@ -4,7 +4,7 @@ import java.util.List;
 import com.avaje.ebean.Page;
 import models.ClassLevel;
 import models.Course;
-import models.Misc;
+import models.Slug;
 import models.StudyGroup;
 import models.UserInfo;
 import play.data.Form;
@@ -49,9 +49,9 @@ public class StudyGroups extends Controller {
    * @return the page containing the study groups for a class
    */
   public static Result viewClassStudyGroup(String course, String classLevel, int page) {
-    ClassLevel cl = ClassLevel.getCL(Misc.unSlugify(classLevel));
+    ClassLevel cl = ClassLevel.getCL(Slug.unSlugify(classLevel));
     Page<StudyGroup> sg = cl.getStudyGroupPage(page, AMOUNT_OF_ENTRIES);
-    return ok(StudyGroupsForClass.render(Misc.unSlugify(classLevel), cl, sg));
+    return ok(StudyGroupsForClass.render(Slug.unSlugify(classLevel), cl, sg));
   }
 
   /**
@@ -74,7 +74,7 @@ public class StudyGroups extends Controller {
    */
   @Security.Authenticated(Secured.class)
   public static Result createSgForCourse(String courseName) {
-    StudyGroupForm sgf = new StudyGroupForm(Misc.unSlugify(courseName));
+    StudyGroupForm sgf = new StudyGroupForm(Slug.unSlugify(courseName));
     Form<StudyGroupForm> sgForm = Form.form(StudyGroupForm.class).fill(sgf);
     return ok(CreateStudyGroup.render("Create Study Group", sgForm));
   }
@@ -88,7 +88,7 @@ public class StudyGroups extends Controller {
    */
   @Security.Authenticated(Secured.class)
   public static Result createSgForClass(String course, String classLevel) {
-    ClassLevel cl = ClassLevel.getCL(Misc.unSlugify(classLevel));
+    ClassLevel cl = ClassLevel.getCL(Slug.unSlugify(classLevel));
     StudyGroupForm sgf = new StudyGroupForm(cl.getCourse(), Integer.toString(cl.getLevel()));
     Form<StudyGroupForm> sgForm = Form.form(StudyGroupForm.class).fill(sgf);
     return ok(CreateStudyGroup.render("Create Study Group", sgForm));
@@ -127,8 +127,8 @@ public class StudyGroups extends Controller {
         cl.save();
       }
 
-      return redirect(routes.StudyGroups.viewStudyGroup(sg.getId(), Misc.slugify(sg.getCourse()),
-          Misc.slugify(sg.getCourseLevel())));
+      return redirect(routes.StudyGroups.viewStudyGroup(sg.getId(), Slug.slugify(sg.getCourse()),
+          Slug.slugify(sg.getCourseLevel())));
     }
   }
 

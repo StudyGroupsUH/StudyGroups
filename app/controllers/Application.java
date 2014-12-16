@@ -28,7 +28,7 @@ public class Application extends Controller {
    * 
    * @return the index page.
    * 
-   * @author Alvin Prieto 
+   * @author Alvin Prieto
    */
   public static Result index() {
     return ok(Index.render("Welcome", LoginForm.getForm(), false, UserForm.getForm(), false));
@@ -39,7 +39,7 @@ public class Application extends Controller {
    * 
    * @return page containing list of courses
    * 
-   * @author Alvin Prieto 
+   * @author Alvin Prieto
    */
   public static Result listOfCourses() {
     List<Course> courses = Course.find().all();
@@ -52,7 +52,7 @@ public class Application extends Controller {
    * @param currUrl the url of the page where the search button was pressed.
    * @return the search results page
    * 
-   * @author Alvin Prieto 
+   * @author Alvin Prieto
    */
   public static Result search(String currUrl) {
 
@@ -69,7 +69,7 @@ public class Application extends Controller {
     }
     return redirect(currUrl);
   }
-  
+
   /**
    * Returns the about us page.
    * 
@@ -81,20 +81,4 @@ public class Application extends Controller {
     return ok(About.render("About Us", LoginForm.getForm(), false, UserForm.getForm(), false));
   }
 
-  /**
-   * Creates a user account.
-   * 
-   * @return a page
-   *
-  public static Result createAccount() {
-    Form<UserForm> userForm = Form.form(UserForm.class).bindFromRequest();
-
-    if (userForm.hasErrors()) {
-      return badRequest(Index.render("Welcome", LoginForm.getForm(), false, userForm, true));
-    }
-
-    UserForm uf = userForm.get();
-    UserInfoDB.addUserInfo(uf.getFirstName(), uf.getLastName(), uf.getEmail(), uf.getPassword());
-    return redirect(routes.Application.index());
-  }*/
 }

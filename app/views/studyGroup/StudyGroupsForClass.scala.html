@@ -30,7 +30,7 @@
             @if(sg != null) {
             <tbody data-link="row" class="rowlink">
                 <tr class="tBody">
-                    <td><a class="no_link" href="@routes.StudyGroups.viewStudyGroup(sg.getId, Misc.slugify(sg.getCourse), Misc.slugify(sg.getCourseLevel))#disqus_thread">@sg.getTopics()</a></td>
+                    <td><a class="no_link" href="@routes.StudyGroups.viewStudyGroup(sg.getId, Slug.slugify(sg.getCourse), Slug.slugify(sg.getCourseLevel))#disqus_thread">@sg.getTopics()</a></td>
                     <td>@sg.getDay(), @sg.getMeetDateString()</td>
                     <td>@sg.getMeetTimeString()</td>
                     <td>@sg.getLocation()</td>
@@ -70,7 +70,7 @@
     </div>
     
     @if(Secured.isLoggedIn(ctx())) {
-        <h5>Want to create a new study group?  <a href="@routes.StudyGroups.createSgForClass(Misc.slugify(cl.getCourse), Misc.slugify(cl.getCourseLevel))">Go Here</a></h5>
+        <h5>Want to create a new study group?  <a href="@routes.StudyGroups.createSgForClass(Slug.slugify(cl.getCourse), Slug.slugify(cl.getCourseLevel))">Go Here</a></h5>
     }
 </div>
 }

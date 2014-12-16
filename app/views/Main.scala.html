@@ -62,7 +62,7 @@
                 <li><a data-toggle="modal" href="#login">Login</a></li>
                 <li><a data-toggle="modal" href="#createAccount">Create Account</a></li>
             } else {
-                <li><a href="@routes.Users.profile(Secured.getUserInfo(ctx()).getId(), Misc.slugify(Secured.getUserInfo(ctx()).getFullName()))"><img src="@Secured.getUserInfo(ctx()).getProfilePic()" class="profileThumbnail">  @Secured.getUserInfo(ctx()).getFirstName()</a></li>
+                <li><a href="@routes.Users.profile(Secured.getUserInfo(ctx()).getId(), Slug.slugify(Secured.getUserInfo(ctx()).getFullName()))"><img src="@Secured.getUserInfo(ctx()).getProfilePic()" class="profileThumbnail">  @Secured.getUserInfo(ctx()).getFirstName()</a></li>
                 <li><a href="@routes.Users.logout()">Logout</a></li>
             }
           </ul>

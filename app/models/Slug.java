@@ -6,7 +6,7 @@ package models;
  * @author Alvin Prieto
  *
  */
-public class Misc {
+public class Slug {
 
   /**
    * Slugifies a string.
