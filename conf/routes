@@ -6,6 +6,7 @@
 GET     /                           controllers.Application.index()
 GET     /courses                    controllers.Application.listOfCourses()
 GET     /about                      controllers.Application.aboutUs()
+GET     /create                     controllers.Application.create()
 POST    /search                     controllers.Application.search(currUrl: String)
 
 # Users

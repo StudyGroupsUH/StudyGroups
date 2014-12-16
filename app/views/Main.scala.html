@@ -253,7 +253,17 @@ if (splitUrl[3] !== undefined) {
 }
 if (splitUrl[4] !== undefined) {
 	if (splitUrl[5] === undefined) {
-		path += " > " + splitUrl[4].toUpperCase();
+		if (splitUrl[4] === "lecture" || splitUrl[4] === "study-group") {
+			if (splitUrl[4] === "lecture") {
+				path += " > " + upperCase(splitUrl[4]);
+			}
+			else {
+				path += " > " + removeHyphen(splitUrl[4]);
+			}
+		}
+		else {
+			path += " > " + splitUrl[4].toUpperCase();
+		}
 	}
 	else {
 	    path += " > <a href=\""+href.substring(0,href.indexOf("/"+splitUrl[4])+splitUrl[4].length+1)+"\">"+splitUrl[4].toUpperCase()+"</a>";

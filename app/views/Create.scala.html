@@ -1,0 +1,30 @@
+@(message: String)
+
+@scripts = {
+	<link rel="stylesheet" href="@routes.Assets.at("stylesheets/index.css")">
+}
+
+@Main(message, scripts) {
+    
+    <h1>Create</h1>
+    <hr>
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-5">
+            <div class="well">
+                <a href="@routes.Lectures.createLecture()"><h1>Lecture</h1></a>
+                <br/>
+                Create a new lecture.
+            </div>
+        </div>
+        <div class="col-sm-5">
+           <div class="well">
+               <a href="@routes.StudyGroups.createStudyGroup()"><h1>Study Group</h1></a>
+                <br/>
+                Create a new study group.
+           </div>
+        </div>
+        <div class="col-sm-1"></div>
+     </div>
+    
+}

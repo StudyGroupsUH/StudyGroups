@@ -14,6 +14,7 @@ import views.html.Index;
 import views.html.SearchResults;
 import views.html.course.ListOfCourses;
 import views.html.About;
+import views.html.Create;
 
 /**
  * The main controller for this application.
@@ -78,7 +79,11 @@ public class Application extends Controller {
    * @author Alvin Wang
    */
   public static Result aboutUs() {
-    return ok(About.render("About Us", LoginForm.getForm(), false, UserForm.getForm(), false));
+    return ok(About.render("About Us"));
+  }
+  
+  public static Result create() {
+    return ok(Create.render("Create"));
   }
 
 }
