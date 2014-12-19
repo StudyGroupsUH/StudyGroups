@@ -41,6 +41,12 @@ public class UserInfoDB {
     return UserInfo.find().where().eq("email", email).findUnique();
   }
 
+  /**
+   * Return the UserInfo associated with an id.
+   * 
+   * @param id
+   * @return The UserInfo
+   */
   public static UserInfo getUser(long id) {
     return UserInfo.find().where().eq("id", id).findUnique();
   }

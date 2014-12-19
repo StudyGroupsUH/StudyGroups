@@ -13,13 +13,19 @@ import play.data.validation.Constraints;
 import play.data.validation.ValidationError;
 
 /**
+ * Backing class for user form.
  * 
- * @author Alvin Prieto
+ * @author Alvin Prieto and Alvin Wang(ProfilePic and its Validation)
  *
  */
 public class UserForm {
   
-  /** Simple e-mail regex */
+  /** 
+   * Simple e-mail regex
+   * 
+   * Added by: Alvin Wang
+   * Source: http://stackoverflow.com/a/8204716
+   */
   public static final Pattern VALID_EMAIl_REGEX = 
       Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
@@ -75,6 +81,7 @@ public class UserForm {
       errors.add(new ValidationError("password2", "Passwords do not match."));
     }
 
+    /** Alvin Wang */
     if (!(profilePic == null || profilePic.length() == 0)) {
       if (!exists(profilePic)) {
         errors.add(new ValidationError("profilePic", "Invalid URL. Example: http://www.example.com/me.jpg"));
@@ -194,6 +201,9 @@ public class UserForm {
   /**
    * Crude validation of an email address using a regex.
    * 
+   * Added by: Alvin Wang
+   * Source: http://stackoverflow.com/a/8204716
+   * 
    * @param email the email
    * @return true if valid, otherwise false.
    */
@@ -202,6 +212,15 @@ public class UserForm {
     return matcher.find();
   }
   
+  /**
+   * Checks if URL is valid.
+   * 
+   * Added by: Alvin Wang
+   * Source: http://stackoverflow.com/a/4177885
+   * 
+   * @param URLName
+   * @return true if valid URL, false otherwise.
+   */
   public static boolean exists(String URLName){
     try {
       HttpURLConnection.setFollowRedirects(false);

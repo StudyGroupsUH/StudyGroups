@@ -1,25 +1,29 @@
-@(message: String, course: models.Course)
+@(message: String, course: models.Course) 
 
 @Main(message) {
-    
-    <h1>@course.getCourseName()  (@course.getId())</h1>
-    <hr>
-    </br>
-    </br>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="well">
-                <h1><a href="@routes.Lectures.viewLecture(Slug.slugify(course.getId()))">Lectures</a></h1>
-                <h2>View lectures that are related to this course</h2>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="well">
-                <h1><a href="@routes.StudyGroups.listStudyGroups(Slug.slugify(course.getId))">Study Groups</a></h1>
-                <h2>View study groups related to this course</h2>
-            </div>
-        </div>
-    
-    </div>    
-   
+<!-- Created By: Alvin Prieto -->
+<h1>@course.getCourseName() (@course.getId())</h1>
+<hr>
+</br>
+</br>
+<div class="row">
+  <div class="col-md-6">
+    <div class="well">
+      <h1>
+        <a href="@routes.Lectures.viewLecture(Slug.slugify(course.getId()))">Lectures</a>
+      </h1>
+      <h2>View lectures that are related to this course</h2>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="well">
+      <h1>
+        <a href="@routes.StudyGroups.listStudyGroups(Slug.slugify(course.getId))">Study Groups</a>
+      </h1>
+      <h2>View study groups related to this course</h2>
+    </div>
+  </div>
+
+</div>
+
 }

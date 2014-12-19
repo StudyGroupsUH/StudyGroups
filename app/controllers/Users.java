@@ -48,6 +48,14 @@ public class Users extends Controller {
     return redirect(routes.Application.index());
   }
 
+  /**
+   * Processes login form submission from a user.
+   * 
+   * @param url
+   * 
+   * @return If errors are found, display errors, else redirect to Index or
+   *         where ever the user last left off.
+   */
   public static Result postLogin(String url) {
     Form<LoginForm> loginData = Form.form(LoginForm.class).bindFromRequest();
     if (loginData.hasErrors()) {
@@ -65,11 +73,27 @@ public class Users extends Controller {
     }
   }
 
+  /**
+   * Logs out user.
+   * 
+   * @return A redirect to the Index page.
+   */
   public static Result logout() {
     session().clear();
     return redirect(routes.Application.index());
   }
 
+  
+  /**
+   * Displays a user's profile page.
+   * 
+   * @param id
+   * @param name
+   * 
+   * @return The profile page.
+   * 
+   * @author Alvin Wang
+   */
   public static Result profile(long id, String name) {
     UserInfo user = UserInfoDB.getUser(id);
     List<StudyGroup> sg = user.userStudyGroups();

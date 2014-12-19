@@ -9,6 +9,9 @@ import play.data.validation.Constraints;
 
 /**
  * Backing class for the login form.
+ * 
+ * @author Alvin Prieto
+ * 
  */
 public class LoginForm {
 

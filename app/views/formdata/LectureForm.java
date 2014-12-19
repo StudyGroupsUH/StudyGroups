@@ -12,7 +12,7 @@ import play.data.validation.ValidationError;
 /**
  * Java backing class for Lecture's form data.
  * 
- * @author Alvin
+ * @author Alvin Wang
  *
  */
 public class LectureForm {

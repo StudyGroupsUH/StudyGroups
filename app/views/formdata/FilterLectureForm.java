@@ -3,7 +3,7 @@ package views.formdata;
 /**
  * Backing class for Filter data.
  * 
- * @author Alvin
+ * @author Alvin Wang
  *
  */
 public class FilterLectureForm {

@@ -1,34 +1,32 @@
 @(message: String, courses: List[models.Course])
 
 @scripts = {
-	<link rel="stylesheet" href="@routes.Assets.at("stylesheets/courses.css")">
-}
-	
+<link rel="stylesheet" href="@routes.Assets.at("stylesheets/courses.css")">
+} 
 
 @Main(message, scripts) {
-    
-    <div class="list-page">
-      <h1>List of Courses</h1>
-    </div>
-    
+<!-- Created By: Alvin Prieto -->
+<div class="list-page">
+  <h1>List of Courses</h1>
+</div>
 
-    <div class = "well">
-        <div class="row">
-            <div class="col-md-6">
-            <ul>
-                @for(index <- 0 to 77) {
-                  <li class="sub"><a href="@routes.Courses.viewCourse(Slug.slugify(courses.get(index).getId()))">(@courses.get(index).getId()) @courses.get(index).getCourseName()</a></li>
-                }
-             </ul>
-             </div>
-             
-             <div class="col-md-6">
-             <ul>
-                @for(index <- 78 to 154) {
-                  <li class="sub"><a href="@routes.Courses.viewCourse(Slug.slugify(courses.get(index).getId()))">(@courses.get(index).getId()) @courses.get(index).getCourseName()</a></li>
-                }
-             </ul>
-             </div>
-        </div>
+<div class="well">
+  <div class="row">
+    <div class="col-md-6">
+      <ul>
+        @for(index <- 0 to 77) {
+        <li class="sub"><a href="@routes.Courses.viewCourse(Slug.slugify(courses.get(index).getId()))">(@courses.get(index).getId())
+            @courses.get(index).getCourseName()</a></li> }
+      </ul>
     </div>
+
+    <div class="col-md-6">
+      <ul>
+        @for(index <- 78 to 154) {
+        <li class="sub"><a href="@routes.Courses.viewCourse(Slug.slugify(courses.get(index).getId()))">(@courses.get(index).getId())
+            @courses.get(index).getCourseName()</a></li> }
+      </ul>
+    </div>
+  </div>
+</div>
 }

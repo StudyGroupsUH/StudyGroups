@@ -9,7 +9,7 @@ import models.LectureDB;
 /**
  * All levels of given course that have lectures.
  * 
- * @author Alvin
+ * @author Alvin Wang
  *
  */
 public class LectureLevels {

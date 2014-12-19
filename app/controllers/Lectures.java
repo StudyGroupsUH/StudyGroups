@@ -97,10 +97,9 @@ public class Lectures extends Controller{
   }
 
   /**
-   * Delete lecture from repository
+   * Deletes a lecture from database.
    * 
-   * Issue: Only deletes from the top of the list. -AW
-   * 
+   * @param id
    * @param course
    * @param level
    * @param videoId
