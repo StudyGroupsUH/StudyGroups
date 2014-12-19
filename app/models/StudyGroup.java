@@ -29,7 +29,6 @@ public class StudyGroup extends Model {
   private long id;
 
   private DateTime meetTime;
-  private String amPm;
 
   private String course;
   private int level;
@@ -57,18 +56,16 @@ public class StudyGroup extends Model {
    * @param year the year
    * @param hour the hour
    * @param min the minute
-   * @param amPm am pm
    * @param topics topics to be covered.
    * @param user who created study group
    */
   public StudyGroup(long id, String course, int level, String location, int month, int day, int year, int hour,
-      int min, String amPm, String topics, UserInfo user) {
+      int min, String topics, UserInfo user) {
     this.setId(id);
     this.setCourse(course.toUpperCase());
     this.setLevel(level);
     this.setLocation(location);
     this.meetTime = new DateTime(year, month, day, hour, min);
-    this.amPm = amPm;
     this.setTopics(topics);
     this.setCourseLevel(course.toUpperCase() + " " + level);
     this.setUser(user);
@@ -166,7 +163,7 @@ public class StudyGroup extends Model {
    * @return formatted meettime string
    */
   public String getMeetTimeString() {
-    return DateTimeInfo.getTimeString(meetTime) + " " + getAmPm();
+    return DateTimeInfo.getTimeString(meetTime);
   }
 
   /**
@@ -313,20 +310,6 @@ public class StudyGroup extends Model {
    */
   public void setDateCreated(DateTime dateCreated) {
     this.dateCreated = dateCreated;
-  }
-
-  /**
-   * @return the amPm
-   */
-  public String getAmPm() {
-    return amPm;
-  }
-
-  /**
-   * @param amPm the amPm to set
-   */
-  public void setAmPm(String amPm) {
-    this.amPm = amPm;
   }
 
   /**

@@ -15,7 +15,7 @@
   <div class="row">
     <div class="col-sm-4">
     <h3>Information: </h3>
-    @if(Secured.isLoggedIn(ctx()) && !sg.getAttendees().contains(Secured.getUserInfo(ctx()))) {
+    @if(Secured.isLoggedIn(ctx()) && !sg.getAttendees().contains(Secured.getUserInfo(ctx())) && !sg.getUser().equals(Secured.getUserInfo(ctx()))) {
         <a href="@routes.StudyGroups.joinStudyGroup(sg.getId, Slug.slugify(sg.getCourse), Slug.slugify(sg.getCourseLevel))" type="button" class="btn btn-primary btn-sm btn-block">Join</a>
         </br>
     }

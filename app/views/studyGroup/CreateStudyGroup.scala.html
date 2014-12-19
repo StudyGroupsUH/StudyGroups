@@ -35,16 +35,14 @@
             placeholder3 = Integer.toString(models.DateTimeInfo.getYear()),
             help3 = "YYYY")
             
-        @bootstrap3.textTime(
+        @bootstrap3.textTwoBoxes(
             sgf("hour"),
             label = "Time",
             placeholder = Integer.toString(models.DateTimeInfo.getHour()),
-            help = "HH",
+            help = "HH (use 24-hour format)",
             sgf("min"),
             placeholder2 = Integer.toString(models.DateTimeInfo.getMinute()),
-            help2 = "mm",
-            sgf("amPm"),
-            buttonNameList = models.DateTimeInfo.getAmPm())
+            help2 = "mm")
             
         @bootstrap3.textShort(
             sgf("location"),

@@ -115,7 +115,7 @@ public class StudyGroups extends Controller {
 
       StudyGroup sg =
           new StudyGroup(form.id, form.course, form.intLevel, form.location, form.intMonth, form.intDay, form.year,
-              form.intHours, form.intMinutes, form.amPm, form.topics, user);
+              form.intHours, form.intMinutes, form.topics, user);
 
       sg.save();
 

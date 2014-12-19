@@ -47,9 +47,6 @@ public class StudyGroupForm {
   @Constraints.Required(message = "Minutes are required.")
   public String min;
 
-  @Constraints.Required(message = "Please select one.")
-  public String amPm;
-
   public String topics;
 
   public int intLevel;

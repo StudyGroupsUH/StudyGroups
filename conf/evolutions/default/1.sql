@@ -31,7 +31,6 @@ create table lecture (
 create table study_group (
   id                        bigint not null,
   meet_time                 timestamp,
-  am_pm                     varchar(255),
   course                    varchar(255),
   level                     integer,
   location                  varchar(255),

@@ -59,11 +59,6 @@ public class DateTimeInfo {
   public static int getMinute() {
     return today.minuteOfHour().get();
   }
-  
-  public static List<String> getAmPm() {
-    String[] amPm = {"a.m.", "p.m."};
-    return java.util.Arrays.asList(amPm);
-  }
 
   /**
    * Formats the date part.
@@ -85,7 +80,7 @@ public class DateTimeInfo {
    * @return the formatted time
    */
   public static String getTimeString(DateTime time) {
-    String pattern = "hh : mm";
+    String pattern = "h:mm a";
     DateTimeFormatter fmt = DateTimeFormat.forPattern(pattern);
     return fmt.print(time);
   }
