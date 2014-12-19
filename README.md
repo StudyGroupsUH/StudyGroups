@@ -2,7 +2,7 @@
 ============================================================
 How to run locally:
 ```
-Download and setup [Play!](https://www.playframework.com/download) ver. 2.2
+Download and setup Play! ver. 2.2
 git clone https://github.com/StudyGroupsUH/StudyGroups.git
 cd StudyGroups
 play
