@@ -298,12 +298,8 @@ if (splitUrl[6] !== undefined) {
 }
 if (splitUrl[7] !== undefined) {
     var id = splitUrl[8].split("#");
-    if (splitUrl[9] === undefined) {
-        path += " > " + "Study-Group - "+ id[0];
-    }
-    else {
-        path += " > <a href=\""+href.substring(0,href.indexOf("/"+splitUrl[7])+splitUrl[7].length+1)+"?page=0\">"+"Study-Group "+ splitUrl[8] + "</a>";
-    }
+    path += " > " + "Study-Group - "+ id[0];
+    
 }
 
 

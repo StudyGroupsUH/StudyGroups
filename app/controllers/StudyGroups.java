@@ -151,4 +151,23 @@ public class StudyGroups extends Controller {
     return ok(ViewStudyGroup.render(sg.getCourseLevel(), sg));
   }
 
+  /**
+   * Allows a logged in user to join a study group.
+   * 
+   * @param id id of study group
+   * @param course course of study group
+   * @param classLevel class level of study group
+   * @return the page of the study group
+   */
+  public static Result joinStudyGroup(long id, String course, String classLevel) {
+    StudyGroup sg = StudyGroup.getSG(id);
+    UserInfo user = Secured.getUserInfo(ctx());
+    long userId = user.getId();
+
+    String userIds = sg.getUserIds();
+    sg.setUserIds(userIds + Long.toString(userId) + "|");
+    sg.save();
+    return ok(ViewStudyGroup.render(sg.getCourseLevel(), sg));
+  }
+
 }

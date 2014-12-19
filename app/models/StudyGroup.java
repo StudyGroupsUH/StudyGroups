@@ -8,10 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
-import com.avaje.ebean.Page;
 import play.db.ebean.Model;
+import com.avaje.ebean.Page;
 
 /**
  * A StudyGroup model.
@@ -43,6 +41,8 @@ public class StudyGroup extends Model {
   @OneToOne
   private UserInfo user;
 
+  private String userIds;
+
   private DateTime dateCreated;
 
   /**
@@ -72,8 +72,8 @@ public class StudyGroup extends Model {
     this.setTopics(topics);
     this.setCourseLevel(course.toUpperCase() + " " + level);
     this.setUser(user);
-
     this.setDateCreated(new DateTime());
+    this.setUserIds("");
   }
 
   /**
@@ -327,6 +327,40 @@ public class StudyGroup extends Model {
    */
   public void setAmPm(String amPm) {
     this.amPm = amPm;
+  }
+
+  /**
+   * @return the userIds
+   */
+  public String getUserIds() {
+    return userIds;
+  }
+
+  /**
+   * @param userIds the userIds to set
+   */
+  public void setUserIds(String userIds) {
+    this.userIds = userIds;
+  }
+
+  /**
+   * Returns the list of attendees.
+   * 
+   * @return list of attendees
+   */
+  public List<UserInfo> getAttendees() {
+    List<UserInfo> attendees = new ArrayList<>();
+
+    if (userIds.equals("")) {
+      return attendees;
+    }
+    String[] users = userIds.split("\\|");
+    for (int x = 0; x < users.length; x++) {
+      long id = Long.parseLong(users[x]);
+      UserInfo user = UserInfoDB.getUser(id);
+      attendees.add(user);
+    }
+    return attendees;
   }
 
 }

@@ -15,6 +15,11 @@
   <div class="row">
     <div class="col-sm-4">
     <h3>Information: </h3>
+    @if(Secured.isLoggedIn(ctx()) && !sg.getAttendees().contains(Secured.getUserInfo(ctx()))) {
+        <a href="@routes.StudyGroups.joinStudyGroup(sg.getId, Slug.slugify(sg.getCourse), Slug.slugify(sg.getCourseLevel))" type="button" class="btn btn-primary btn-sm btn-block">Join</a>
+        </br>
+    }
+    
     <ul>
         <li><i><b>Day:</b></i>&nbsp;&nbsp;&nbsp;@sg.getDay()</li>
         <li><i><b>Date:</b></i>&nbsp;&nbsp;&nbsp;@sg.getMeetDateString()</li>    
@@ -22,8 +27,9 @@
         <li><i><b>Location:</b></i>&nbsp;&nbsp;&nbsp;@sg.getLocation()</li>
         <li><i><b>People Attending:</b></i></li>
             <ul>
-                <li>Person 1</li>
-                <li>Person 2</li>
+                @for(person <- sg.getAttendees()) {
+                    <li><a href="@routes.Users.profile(person.getId, person.getFullName)">@person.getFullName()</a></li>
+                }
             </ul>
             
         </br>

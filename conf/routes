@@ -34,6 +34,7 @@ POST    /add/study-group                                controllers.StudyGroups.
 GET     /courses/:course/study-group/:class/view/:id    controllers.StudyGroups.viewStudyGroup(id: Long, course: String, class: String)
 GET		/courses/:course/study-group	                controllers.StudyGroups.listStudyGroups(course: String)
 GET		/courses/:course/study-group/:class	        controllers.StudyGroups.viewClassStudyGroup(course: String, class: String, page: Integer)
+GET     /courses/:course/study-group/:class/view/:id/join controllers.StudyGroups.joinStudyGroup(id: Long, course: String, class: String)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

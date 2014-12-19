@@ -38,6 +38,7 @@ create table study_group (
   topics                    varchar(255),
   course_level              varchar(255),
   user_id                   bigint,
+  user_ids                  varchar(255),
   date_created              timestamp,
   constraint pk_study_group primary key (id))
 ;
