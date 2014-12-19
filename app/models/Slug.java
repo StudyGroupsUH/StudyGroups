@@ -41,8 +41,8 @@ public class Slug {
   public static String unSlugifyName(String name) {
     name = name.replace('-', ' ');
     String[] names = name.split("\\s+");
-    names[0] = names[0].substring(0, 1).toUpperCase() + names[0].substring(1, names[0].length());
-    names[1] = names[1].substring(0, 1).toUpperCase() + names[1].substring(1, names[1].length());
+    names[0] = Character.toUpperCase(names[0].charAt(0)) + names[0].substring(1, names[0].length());
+    names[1] = Character.toUpperCase(names[1].charAt(0)) + names[1].substring(1, names[1].length());
     return names[0] + " " + names[1];
   }
 

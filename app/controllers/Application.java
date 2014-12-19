@@ -81,7 +81,14 @@ public class Application extends Controller {
   public static Result aboutUs() {
     return ok(About.render("About Us"));
   }
-  
+
+  /**
+   * Returns the create page.
+   * 
+   * @return the create page
+   * 
+   * @author Alvin Prieto
+   */
   public static Result create() {
     return ok(Create.render("Create"));
   }

@@ -123,8 +123,7 @@ public class Search {
     boolean result = true;
     for (String key : keys) {
       if (!target.toLowerCase().contains(key.toLowerCase())) {
-        result = false;
-        break;
+        return false;
       }
     }
     return result;
@@ -148,6 +147,11 @@ public class Search {
     return studyGroups;
   }
 
+  /**
+   * Returns a list of Courses that matches the search term.
+   * 
+   * @return List of Courses
+   */
   public static List<Course> getCourseResults() {
     return courses;
   }
